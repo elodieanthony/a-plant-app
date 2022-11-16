@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-// import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 import MainHeader from '../navigation/MainHeader';
 import NavLinks from './NavLinks';
@@ -36,7 +36,7 @@ const MainNavigation = props => {
           <span />
         </button>
         <h1 className='main-navigation__title'>
-          <a href='/'>A Plant App</a>
+          <Link to='/'>A Plant App.</Link>
         </h1>
         <nav className='main-navigation__header-nav'>
           <NavLinks />
