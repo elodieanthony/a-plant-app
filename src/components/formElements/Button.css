@@ -6,6 +6,7 @@
   color: white;
   border: none;
   font-size: 1rem;
+  text-decoration: none;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.26);
   cursor: pointer;
 }
@@ -24,4 +25,21 @@
     width: auto;
     margin: 1rem;
   }
+}
+
+.button:disabled,
+.button:hover:disabled,
+.button:active:disabled {
+  background: #ccc;
+  color: #979797;
+  border-color: #ccc;
+  cursor: not-allowed;
+}
+
+.button--small {
+  font-size: 0.8rem;
+}
+
+.button--big {
+  font-size: 1.5rem;
 }
