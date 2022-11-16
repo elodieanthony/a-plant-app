@@ -12,6 +12,10 @@ body {
   margin: 0;
 }
 
+main {
+  width: 100%;
+}
+
 .slide-in-left-enter {
   transform: translateX(-100%);
 }
@@ -38,4 +42,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (min-width: 768px) {
+  .align-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
