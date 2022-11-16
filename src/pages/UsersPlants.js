@@ -1,5 +1,5 @@
 const UsersPlants = () => {
-    <h1>Users plants</h1>
+  return <h1>Users plants</h1>;
 };
 
 export default UsersPlants;
