@@ -1,4 +1,4 @@
-import Button from '../components/UIElements/Button';
+import Button from '../components/formElements/Button';
 import './Welcome.css';
 
 const Welcome = () => {
