@@ -9,9 +9,9 @@ const Welcome = () => {
       <p>And more!</p>
       <p>Don't hesitate to join us by</p>
       <div className='align-content'>
-        <Button inverse>Subscribe</Button>
+        <Button inverse to='/auth'>Subscribe</Button>
         <p>Or</p>
-        <Button>Login</Button>
+        <Button to='/auth'>Login</Button>
       </div>
     </div>
   );
