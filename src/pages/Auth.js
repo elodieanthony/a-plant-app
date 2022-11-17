@@ -8,11 +8,20 @@ import {
   VALIDATOR_MINLENGTH,
   VALIDATOR_REQUIRE,
 } from '../util/validators';
+import { useForm } from '../hooks/form-hook';
 
 import './Auth.css';
 
 const Auth = () => {
   const [isLoginMode, setIsLoginMode] = useState(true);
+
+  const [formState, inputHandler, setFormData] = useForm(
+    {
+      email: { value: '', isValid: false },
+      password: { value: '', isValid: false },
+    },
+    false
+  );
 
   const switchModeHandler = () => {
     setIsLoginMode(prevMode => !prevMode);
@@ -28,6 +37,7 @@ const Auth = () => {
           id='name'
           label='Name'
           errorText='Please enter a valid name.'
+          onInput={inputHandler}
           validators={[VALIDATOR_REQUIRE()]}
         ></Input>
       )}
@@ -38,6 +48,7 @@ const Auth = () => {
         type='email'
         label='Email'
         errorText='Please enter a valid email address.'
+        onInput={inputHandler}
         validators={[VALIDATOR_REQUIRE()]}
       />
       <Input
@@ -46,9 +57,12 @@ const Auth = () => {
         id='password'
         label='Password'
         errorText='Please enter a valid password (at lease 6 characters)'
+        onInput={inputHandler}
         validators={[VALIDATOR_MINLENGTH(6)]}
       />
-      <Button type='submit'>{isLoginMode ? 'login' : 'SIGNUP'}</Button>
+      <Button type='submit' disabled={!formState.isValid}>
+        {isLoginMode ? 'login' : 'SIGNUP'}
+      </Button>
       {isLoginMode && <p>Not registered yet?</p>}
       <Button inverse onClick={switchModeHandler}>
         SWITCH TO {isLoginMode ? 'SIGNUP' : 'LOGIN'}
