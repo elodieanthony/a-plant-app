@@ -1,7 +1,6 @@
 .button {
   width: 100%;
   padding: 1rem 2rem;
-  /* margin: 1rem; */
   background-color: #0e7030;
   color: white;
   border: none;
@@ -10,6 +9,7 @@
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.26);
   cursor: pointer;
 }
+
 .button--inverse {
   background: transparent;
   color: #0e7030;
@@ -20,6 +20,7 @@
   color: white;
   background: #0e7030;
 }
+
 @media (min-width: 768px) {
   .button {
     width: auto;

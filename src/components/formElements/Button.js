@@ -16,6 +16,7 @@ const Button = props => {
       </Link>
     );
   }
+
   return (
     <button
       type='button'
