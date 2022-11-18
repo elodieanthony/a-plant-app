@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import './NavLinks.css';
 
@@ -12,18 +12,18 @@ const NavLinks = props => {
     <ul className='nav-links'>
       {auth.isLoggedIn && (
         <li>
-          <Link to='/plants'>My plants</Link>
+          <NavLink to='/plants'>My plants</NavLink>
         </li>
       )}
       {auth.isLoggedIn && (
         <li>
-          <Link to='/plants/new'>Add plants</Link>
+          <NavLink to='/plants/new'>Add plants</NavLink>
         </li>
       )}
 
       {!auth.isLoggedIn && (
         <li>
-          <Link to='/auth'>LOGIN</Link>
+          <NavLink to='/auth'>LOGIN</NavLink>
         </li>
       )}
       {auth.isLoggedIn && <button onClick={auth.logout}>LOGOUT</button>}
