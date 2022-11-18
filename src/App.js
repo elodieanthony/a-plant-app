@@ -60,7 +60,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Welcome />}></Route>
         <Route path='/auth' element={<Auth />}></Route>
-        {/* <Route path='/plants' element={<Navigate to='/auth' />}></Route> */}
+        <Route path='/plants' element={<Navigate to='/auth' />}></Route>
       </Routes>
     );
   }
