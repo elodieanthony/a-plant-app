@@ -19,7 +19,7 @@ const Button = props => {
 
   return (
     <button
-      type='button'
+      type={props.type || 'button'}
       className={`button button--${props.size || 'default'} ${
         props.inverse && 'button--inverse'
       } ${props.danger && 'button--danger'}`}
