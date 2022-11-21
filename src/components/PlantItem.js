@@ -1,4 +1,5 @@
 import { Fragment, useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
 
 import Button from './formElements/Button';
 import './PlanyItem.css';
@@ -37,6 +38,14 @@ const PlantItem = props => {
             <div className='plant-item__icon'></div>
             <p>{props.fertilizer}</p>
           </Card> */}
+
+          {/* <CSSTransition
+              in={cardIsShown}
+              timeout={200}
+              classNames='slide-in-down'
+              mountOnEnter
+              unmountOnExit
+            > */}
           {cardIsShown && (
             <Fragment>
               <Card className='plant-item__details'>
@@ -53,7 +62,6 @@ const PlantItem = props => {
                   <p>{props.expo}</p>
                 </div>
               </Card>
-
               <Card className='plant-item__details'>
                 <div className='plant-item__icon'>
                   <svg class='svg-icon' viewBox='0 0 20 20'>
@@ -95,6 +103,8 @@ const PlantItem = props => {
               </Card>
             </Fragment>
           )}
+
+          {/* </CSSTransition> */}
         </div>
         <div className='plant-item__actions'>
           <Button>edit</Button>
