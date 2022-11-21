@@ -19,6 +19,8 @@ const PlantList = props => {
           repoting={plant.repoting}
         />
       ))}
+      <span className='plant-item break'></span>
+      <span className='plant-item break'></span>
     </ul>
   );
 };
