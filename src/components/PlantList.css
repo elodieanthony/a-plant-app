@@ -2,23 +2,17 @@
   list-style: none;
   margin: 1rem auto;
   padding: 0;
-  width: 95%;
+  /* max-width: 40rem; */
 }
 
-@media (min-width: 768px) {
-  .plant-list {
-    list-style: none;
-    display: flex;
-    flex-flow: column wrap;
-    align-content: space-between;
-    height: 1580px;
-  }
 
-  .container::before,
-  .container::after {
-    content: '';
-    flex-basis: 100%;
-    width: 0;
-    order: 2;
-  }
+
+@media (min-width: 768px) {
+  /* .plant-list {
+    display: flex;
+    justify-content:space-between;
+    width: auto;
+    max-width: 100%;
+    flex-wrap: wrap;
+  } */
 }

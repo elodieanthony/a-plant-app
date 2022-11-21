@@ -51,3 +51,13 @@ main {
     align-items: center;
   }
 }
+
+.grid {
+  display: flex;
+  margin-left: -30px;
+  width: auto;
+}
+.column {
+  padding-left: 30px;
+  background-clip: padding-box;
+}
