@@ -27,6 +27,7 @@ const UsersPlants = () => {
       temperature: '20°',
       soil: 'light, drain and rich',
       repoting: 'Annual plant',
+      type: 'herb',
     },
     {
       id: Math.floor(Math.random() * 3),
@@ -40,6 +41,7 @@ const UsersPlants = () => {
       temperature: '20°',
       soil: 'light, drain and rich',
       repoting: 'Annual plant',
+      type: 'herb',
     },
     {
       id: Math.floor(Math.random() * 3),
@@ -53,6 +55,7 @@ const UsersPlants = () => {
       temperature: '20°',
       soil: 'light, drain and rich',
       repoting: 'Annual plant',
+      type: 'herb',
     },
   ];
 
