@@ -1,36 +1,30 @@
 import { useNavigate } from 'react-router-dom';
-import ImageUpload from '../components/formElements/ImageUpload';
+
 import Input from '../components/formElements/Input';
-import { useForm } from '../hooks/form-hook';
-import { VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from '../util/validators';
 import Button from '../components/formElements/Button';
+import { VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH } from '../util/validators';
+import { useForm } from '../hooks/form-hook';
 
 import './PlantForm.css';
 
-const NewPlant = props => {
-  const navigate = useNavigate();
+const UpdatePlant = props => {
   const [formState, inputHandler] = useForm({
     name: { value: '', isValid: false },
     description: { value: '', isValid: false },
-    image: {
-      value:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/BasilikumGenovesergro%C3%9Fbl%C3%A4ttriger.jpg/1185px-BasilikumGenovesergro%C3%9Fbl%C3%A4ttriger.jpg?uselang=fr',
-      isValid: false,
-    },
     water: { value: '', isValid: false },
     exposition: { value: '', isValid: false },
     temperature: { value: '', isValid: false },
     soil: { value: '', isValid: false },
     repoting: { value: '', isValid: false },
   });
-
-  const plantSubmitHandler = event => {
+  const navigate = useNavigate();
+  const plantUpdateSubmitHandler = event => {
     event.preventDefault();
     navigate('/plants');
   };
 
   return (
-    <form className='plant-form' onSubmit={plantSubmitHandler}>
+    <form className='plant-form' onSubmit={plantUpdateSubmitHandler}>
       <Input
         type='text'
         id='name'
@@ -39,12 +33,6 @@ const NewPlant = props => {
         validators={[VALIDATOR_REQUIRE]}
         errorText='Please enter a valid name.'
         onInput={inputHandler}
-      />
-      <ImageUpload
-        center
-        id='image'
-        onInput={inputHandler}
-        errorText='Please provide an image.'
       />
       <Input
         id='description'
@@ -100,10 +88,10 @@ const NewPlant = props => {
         onInput={inputHandler}
       />
       <Button type='submit' disabled={!formState.isValid}>
-        ADD PLANT
+        UPDATE PLANT
       </Button>
     </form>
   );
 };
 
-export default NewPlant;
+export default UpdatePlant;

@@ -1,3 +1,4 @@
+import { useCallback, useState } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -11,15 +12,14 @@ import Auth from './pages/Auth';
 import UsersPlants from './pages/UsersPlants';
 import NewPlant from './pages/NewPlant';
 import { AuthContext } from './context/auth-context';
+import UpdatePlant from './pages/UpdatePlant';
 
 import './App.css';
-import { useCallback, useState } from 'react';
 
 function App() {
   const [email, setEmail] = useState(false);
   const [password, setPassword] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
 
   let routes;
 
@@ -53,6 +53,7 @@ function App() {
         <Route path='/' element={<Welcome />}></Route>
         <Route path='/plants' element={<UsersPlants />}></Route>;
         <Route path='/plants/new' element={<NewPlant />}></Route>;
+        <Route path='/plants/:plantId' element={<UpdatePlant />}></Route>;
       </Routes>
     );
   } else {
@@ -61,6 +62,7 @@ function App() {
         <Route path='/' element={<Welcome />}></Route>
         <Route path='/auth' element={<Auth />}></Route>
         <Route path='/plants' element={<Navigate to='/auth' />}></Route>
+        <Route path='/plants/new' element={<Navigate to='/auth' />}></Route>
       </Routes>
     );
   }
