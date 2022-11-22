@@ -13,7 +13,9 @@ const Canlendar = props => {
         value={value}
         className='calendar'
         defaultView='week'
-        // formatDay={(locale, date) => formatDate(date, 'd')}
+        onClickDay={(value, event) => {
+          alert('Clicked day:', value);
+        }}
       />
     </div>
   );
