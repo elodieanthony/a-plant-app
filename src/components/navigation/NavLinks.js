@@ -12,13 +12,22 @@ const NavLinks = props => {
     <ul className='nav-links'>
       {auth.isLoggedIn && (
         <li>
-          <NavLink end to='/plants'>My plants</NavLink>
+          <NavLink end to='/plants'>
+            My plants
+          </NavLink>
         </li>
       )}
       {auth.isLoggedIn && (
         <li>
           <NavLink end to='/plants/new'>
             Add plants
+          </NavLink>
+        </li>
+      )}
+      {auth.isLoggedIn && (
+        <li>
+          <NavLink end to='/plants/calendar'>
+            Calendar
           </NavLink>
         </li>
       )}

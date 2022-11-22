@@ -13,6 +13,7 @@ import UsersPlants from './pages/UsersPlants';
 import NewPlant from './pages/NewPlant';
 import { AuthContext } from './context/auth-context';
 import UpdatePlant from './pages/UpdatePlant';
+import Canlendar from './pages/Calendar';
 
 import './App.css';
 
@@ -54,6 +55,7 @@ function App() {
         <Route path='/plants' element={<UsersPlants />}></Route>;
         <Route path='/plants/new' element={<NewPlant />}></Route>;
         <Route path='/plants/:plantId' element={<UpdatePlant />}></Route>;
+        <Route path='/plants/calendar' element={<Canlendar />}></Route>
       </Routes>
     );
   } else {
