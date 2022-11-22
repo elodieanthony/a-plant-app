@@ -18,6 +18,7 @@ const UpdatePlant = props => {
     repoting: { value: '', isValid: false },
   });
   const navigate = useNavigate();
+  
   const plantUpdateSubmitHandler = event => {
     event.preventDefault();
     navigate('/plants');
