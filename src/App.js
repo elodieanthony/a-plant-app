@@ -65,6 +65,10 @@ function App() {
         <Route path='/auth' element={<Auth />}></Route>
         <Route path='/plants' element={<Navigate to='/auth' />}></Route>
         <Route path='/plants/new' element={<Navigate to='/auth' />}></Route>
+        <Route
+          path='/plants/calendar'
+          element={<Navigate to='/auth' />}
+        ></Route>
       </Routes>
     );
   }
