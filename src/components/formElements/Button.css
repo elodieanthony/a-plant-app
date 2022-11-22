@@ -1,4 +1,5 @@
 .button {
+  display: inline-block;
   width: 100%;
   padding: 1rem 2rem;
   background-color: #0e7030;
@@ -15,12 +16,27 @@
   color: #0e7030;
 }
 
+.button--danger {
+  background: transparent;
+  color: #0e7030;
+}
+
+.button--danger:hover,
+.button--danger:active {
+  color: white;
+  background: red;
+}
+
 .button--inverse:hover,
 .button--inverse:active {
   color: white;
   background: #0e7030;
 }
 
+.button--neutral {
+  color: white;
+  background-color: #2291eb;
+}
 @media (min-width: 768px) {
   .button {
     width: auto;
