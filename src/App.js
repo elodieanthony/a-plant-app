@@ -12,6 +12,7 @@ import Auth from './pages/Auth';
 import UsersPlants from './pages/UsersPlants';
 import NewPlant from './pages/NewPlant';
 import { AuthContext } from './context/auth-context';
+import { CalendarContext } from './context/calendar-context';
 import UpdatePlant from './pages/UpdatePlant';
 import Canlendar from './pages/Calendar';
 
@@ -21,6 +22,7 @@ function App() {
   const [email, setEmail] = useState(false);
   const [password, setPassword] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [eventType, setEventType] = useState([]);
 
   let routes;
 
@@ -46,6 +48,10 @@ function App() {
     setPassword(null);
     setIsLoggedIn(false);
     localStorage.removeItem('userData');
+  }, []);
+
+  const addEvent =  useCallback(eventType => {
+   setEventType(prev => [...prev, eventType]);
   }, []);
 
   if (isLoggedIn) {
@@ -83,10 +89,14 @@ function App() {
         logout: logout,
       }}
     >
-      <Router>
-        <MainNavigation />
-        <main>{routes}</main>
-      </Router>
+      <CalendarContext.Provider
+        value={{ events: eventType, addEvent: addEvent }}
+      >
+        <Router>
+          <MainNavigation />
+          <main>{routes}</main>
+        </Router>
+      </CalendarContext.Provider>
     </AuthContext.Provider>
   );
 }

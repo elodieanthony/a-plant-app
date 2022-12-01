@@ -71,7 +71,8 @@
 .rbc-toolbar button.rbc-active:hover,
 .rbc-toolbar button.rbc-active:focus,
 .rbc-toolbar button:active,
-.rbc-toolbar button.rbc-active {
+.rbc-toolbar button.rbc-active,
+.rbc-toolbar button:focus {
   color: white;
   background: #0e7030;
 }
@@ -105,11 +106,36 @@
   margin-left: 1px;
 }
 
+.rbc-event,
+.rbc-day-slot .rbc-background-event {
+  width: auto;
+  margin: 0 1rem 1rem 0;
+  background-color: #097e09;
+}
+
+.rbc-event.rbc-selected,
+.rbc-day-slot .rbc-selected.rbc-background-event {
+  background-color: #097e09;
+}
+.custom-event {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.custom-event h4 {
+  margin: 0;
+}
+
+.custom-event__icon {
+  width: 1rem;
+}
+
 @media (min-width: 768px) {
   .rbc-toolbar .rbc-toolbar-label {
-    padding: 0;
+    padding: 0.5rem;
   }
   .rbc-button-link {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 }
