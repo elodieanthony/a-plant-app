@@ -28,7 +28,6 @@ const Input = props => {
     isTouch: false,
     isValid: props.initialValid || false,
   });
-
   const { id, onInput } = props;
   const { value, isValid } = inputState;
 
@@ -50,25 +49,65 @@ const Input = props => {
     });
   };
 
-  const element =
-    props.element === 'input' ? (
-      <input
-        id={props.id}
-        type={props.type}
-        placeholder={props.placeholder}
-        onChange={changeHandler}
-        onBlur={touchHandler}
-        value={inputState.value}
-      ></input>
-    ) : (
-      <textarea
-        id={props.id}
-        row={props.row || 3}
-        onChange={changeHandler}
-        onBlur={touchHandler}
-        value={inputState.value}
-      ></textarea>
-    );
+  let element;
+  switch (props.element) {
+    case 'input':
+      element = (
+        <input
+          id={props.id}
+          type={props.type}
+          placeholder={props.placeholder}
+          onChange={changeHandler}
+          onBlur={touchHandler}
+          value={inputState.value}
+        ></input>
+      );
+      break;
+    case 'dropdown':
+      element = (
+        <select
+          id={props.id}
+          type={props.type}
+          onChange={changeHandler}
+          onBlur={touchHandler}
+          value={inputState.value}
+        >
+          <option value='initial'>Please choose</option>
+          {props.options.map(option => (
+            <option value={option.value} key={option.value}>
+              {option.name}
+            </option>
+          ))}
+        </select>
+      );
+
+      break;
+    case 'radio-group':
+      element = props.options.map(option => (
+        <div className='radio-group' key={option.id} value={inputState.value}>
+          <input
+            id={option.id}
+            type='radio'
+            onChange={changeHandler}
+            onBlur={touchHandler}
+            name={props.name}
+            value={option.value}
+          ></input>
+          <label htmlFor={inputState.value}>{option.label}</label>
+        </div>
+      ));
+      break;
+    default:
+      element = (
+        <textarea
+          id={props.id}
+          row={props.row || 3}
+          onChange={changeHandler}
+          onBlur={touchHandler}
+          value={inputState.value}
+        ></textarea>
+      );
+  }
 
   return (
     <div
