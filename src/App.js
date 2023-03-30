@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useMemo } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -19,6 +19,67 @@ import Canlendar from './pages/Calendar';
 import './App.css';
 
 function App() {
+  const DUMMY_PLANTS = useMemo(
+    () => [
+      {
+        id: 'id0',
+        image:
+          'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/BasilikumGenovesergro%C3%9Fbl%C3%A4ttriger.jpg/1185px-BasilikumGenovesergro%C3%9Fbl%C3%A4ttriger.jpg?uselang=fr',
+        name: 'Aneth',
+        description: 'It smell good and it is tasty!',
+        water: 'Water each time the soil is dry',
+        fertilizer: '',
+        expo: 'sunny',
+        temperature: '20°',
+        soil: 'light, drain and rich',
+        repoting: 'Annual plant',
+      },
+      {
+        id: 'id1',
+        image:
+          'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/BasilikumGenovesergro%C3%9Fbl%C3%A4ttriger.jpg/1185px-BasilikumGenovesergro%C3%9Fbl%C3%A4ttriger.jpg?uselang=fr',
+        name: 'Thym',
+        description: 'It smell good and it is tasty!',
+        water: 'Water each time the soil is dry',
+        fertilizer: '',
+        expo: 'sunny',
+        temperature: '20°',
+        soil: 'light, drain and rich',
+        repoting: 'Annual plant',
+        type: 'herb',
+      },
+      {
+        id: 'id2',
+        image:
+          'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/BasilikumGenovesergro%C3%9Fbl%C3%A4ttriger.jpg/1185px-BasilikumGenovesergro%C3%9Fbl%C3%A4ttriger.jpg?uselang=fr',
+        name: 'Basilic',
+        description: 'It smell good and it is tasty!',
+        water: 'Water each time the soil is dry',
+        fertilizer: '',
+        expo: 'sunny',
+        temperature: '20°',
+        soil: 'light, drain and rich',
+        repoting: 'Annual plant',
+        type: 'herb',
+      },
+      {
+        id: 'id3',
+        image:
+          'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/BasilikumGenovesergro%C3%9Fbl%C3%A4ttriger.jpg/1185px-BasilikumGenovesergro%C3%9Fbl%C3%A4ttriger.jpg?uselang=fr',
+        name: 'Persil',
+        description: 'It smell good and it is tasty!',
+        water: 'Water each time the soil is dry',
+        fertilizer: '',
+        expo: 'sunny',
+        temperature: '20°',
+        soil: 'light, drain and rich',
+        repoting: 'Annual plant',
+        type: 'herb',
+      },
+    ],
+    []
+  );
+
   const [email, setEmail] = useState(false);
   const [password, setPassword] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -50,18 +111,23 @@ function App() {
     localStorage.removeItem('userData');
   }, []);
 
-  const addEvent =  useCallback(eventType => {
-   setEventType(prev => [...prev, eventType]);
+  const addEvent = useCallback(eventType => {
+    setEventType(prev => [...prev, eventType]);
   }, []);
-
   if (isLoggedIn) {
     routes = (
       <Routes>
         <Route path='/' element={<Welcome />}></Route>
-        <Route path='/plants' element={<UsersPlants />}></Route>;
-        <Route path='/plants/new' element={<NewPlant />}></Route>;
+        <Route
+          path='/plants'
+          element={<UsersPlants items={DUMMY_PLANTS} />}
+        ></Route>
+        ;<Route path='/plants/new' element={<NewPlant />}></Route>;
         <Route path='/plants/:plantId' element={<UpdatePlant />}></Route>;
-        <Route path='/plants/calendar' element={<Canlendar />}></Route>
+        <Route
+          path='/plants/calendar'
+          element={<Canlendar items={DUMMY_PLANTS} />}
+        ></Route>
       </Routes>
     );
   } else {
