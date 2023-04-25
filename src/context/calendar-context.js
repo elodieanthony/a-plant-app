@@ -5,9 +5,7 @@ export const CalendarContext = createContext({
     {
       plantName: null,
       type: null,
-      numberOfTime: 0,
-      //   beginingTime: null,
-      //   endTime: null,
+      eventDates: [],
     },
   ],
   addEvent: () => {},

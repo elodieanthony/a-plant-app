@@ -1,15 +1,19 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useState, useContext } from 'react';
 
 import Button from './formElements/Button';
 import Card from './UIElements/Card';
 import Modal from './UIElements/Modal';
+
+import { CalendarContext } from '../context/calendar-context';
 
 import './PlanyItem.css';
 
 const PlantItem = props => {
   const [cardIsShown, setCardIsShown] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const calendar = useContext(CalendarContext);
 
+  // console.log(calendar)
   const showMoreHandler = () => {
     setCardIsShown(prev => (prev = !prev));
   };
