@@ -2,19 +2,21 @@ import { useNavigate } from 'react-router-dom';
 import ImageUpload from '../components/formElements/ImageUpload';
 import Input from '../components/formElements/Input';
 import { useForm } from '../hooks/form-hook';
+import { PlantsContext } from '../context/plants-context';
 import { VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from '../util/validators';
 import Button from '../components/formElements/Button';
 
 import './PlantForm.css';
+import { useContext } from 'react';
 
 const NewPlant = props => {
   const navigate = useNavigate();
+  const { DUMMY_PLANTS, setDUMMY_PLANTS } = useContext(PlantsContext);
   const [formState, inputHandler] = useForm({
     name: { value: '', isValid: false },
     description: { value: '', isValid: false },
     image: {
-      value:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/BasilikumGenovesergro%C3%9Fbl%C3%A4ttriger.jpg/1185px-BasilikumGenovesergro%C3%9Fbl%C3%A4ttriger.jpg?uselang=fr',
+      value: '',
       isValid: false,
     },
     water: { value: '', isValid: false },
@@ -25,7 +27,19 @@ const NewPlant = props => {
   });
 
   const plantSubmitHandler = event => {
+    const newPlantData = {
+      id: `id${DUMMY_PLANTS.length}`,
+      image: URL.createObjectURL(formState.inputs.image.value),
+      name: formState.inputs.name.value,
+      description: formState.inputs.description.value,
+      water: formState.inputs.water.value,
+      exposition: formState.inputs.exposition.value,
+      temperature: formState.inputs.temperature.value,
+      soil: formState.inputs.soil.value,
+      repoting: formState.inputs.repoting.value,
+    };
     event.preventDefault();
+    setDUMMY_PLANTS(prevPlants => [...prevPlants, newPlantData]);
     navigate('/plants');
   };
 

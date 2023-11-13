@@ -13,13 +13,14 @@ import UsersPlants from './pages/UsersPlants';
 import NewPlant from './pages/NewPlant';
 import { AuthContext } from './context/auth-context';
 import { CalendarContext } from './context/calendar-context';
+import { PlantsContext } from './context/plants-context';
 import UpdatePlant from './pages/UpdatePlant';
 import Canlendar from './pages/Calendar';
 
 import './App.css';
 
 function App() {
-  const DUMMY_PLANTS = useMemo(
+  const [DUMMY_PLANTS, setDUMMY_PLANTS] = useState(
     () => [
       {
         id: 'id0',
@@ -84,6 +85,10 @@ function App() {
   const [password, setPassword] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [eventType, setEventType] = useState([]);
+  const plantsValue = useMemo(
+    () => ({ DUMMY_PLANTS, setDUMMY_PLANTS }),
+    [DUMMY_PLANTS, setDUMMY_PLANTS]
+  );
 
   let routes;
 
@@ -116,19 +121,21 @@ function App() {
   }, []);
   if (isLoggedIn) {
     routes = (
-      <Routes>
-        <Route path='/' element={<Welcome />}></Route>
-        <Route
-          path='/plants'
-          element={<UsersPlants items={DUMMY_PLANTS} />}
-        ></Route>
-        ;<Route path='/plants/new' element={<NewPlant />}></Route>;
-        <Route path='/plants/:plantId' element={<UpdatePlant />}></Route>;
-        <Route
-          path='/plants/calendar'
-          element={<Canlendar items={DUMMY_PLANTS} />}
-        ></Route>
-      </Routes>
+      <PlantsContext.Provider value={plantsValue}>
+        <Routes>
+          <Route path='/' element={<Welcome />}></Route>
+          <Route
+            path='/plants'
+            element={<UsersPlants items={DUMMY_PLANTS} />}
+          ></Route>
+          ;<Route path='/plants/new' element={<NewPlant />}></Route>;
+          <Route path='/plants/:plantId' element={<UpdatePlant />}></Route>;
+          <Route
+            path='/plants/calendar'
+            element={<Canlendar items={DUMMY_PLANTS} />}
+          ></Route>
+        </Routes>
+      </PlantsContext.Provider>
     );
   } else {
     routes = (
